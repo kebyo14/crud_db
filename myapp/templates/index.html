@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HouseVOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRWW0zlBe+r9yk6eOkXf2TMW6eKI57tnvf4eMzE0s" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav data-aos="flip-left" class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(35, 42, 50);">
+            <div class="container">
+                
+                <a class="navbar-brand" href="#">
+                    
+                    <img src="{% static 'images/1.png' %}" alt="Logo" style="height: 40px;"> 
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        {% for nav in navs %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ nav.texts  }}</a>
+                        </li>
+                        {% endfor %}
+                      
+                    </ul>
+                    
+                    <div class="sign__section">
+                        {% if request.session.user_name %}
+                            <p>{{ request.session.user_name }}</p>
+                            <a href="{% url 'logout' %}">Выйти</a> 
+                        {% else %}
+                            <a href="{% url 'create_item' %}">Sign up</a>
+                            <a href="{% url 'link_item' %}">Sign in</a>
+                            <p>Гость!</p>
+                        {% endif %}
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+   
+    
+    <div class="section__header">
+        <div class="overlay">
+            <div data-aos="fade-up" class="hero-content  ">
+                <h1 data-aos="fade-up">Жилой комплекс<br>в историческом центре</h1>
+                
+                <div data-aos-anchor-placement="center-center" class="contact-info">
+                    <p><span>&#x1F4CD;</span> Наб. реки Фонтанки 10-15</p>
+                    <p><span>&#x1F4DE;</span> 8 (812) 123-45-67</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div  class="section__inform ">
+        <div data-aos="zoom-in" class="inform__items">
+            <img src="{% static 'images/bench.png' %}" alt="">
+            <p>Рядом исторические парки и скверы</p>
+        </div>
+        <div data-aos="zoom-in" class="inform__items">
+            <img src="{% static 'images/building.png' %}" alt="">
+            <p>Полностью
+                обустроенный</p>
+        </div>
+        <div data-aos="zoom-in" class="inform__items">
+            <img src="{% static 'images/fountain.png' %}" alt="">
+            <p>10 фонтанов
+                на территории</p>
+        </div>
+        <div  data-aos="zoom-in" class="inform__items">
+            <img src="{% static 'images/bicycle.png' %}" alt="">
+            <p>6 км
+                велодорожек</p>
+        </div>
+    </div>
+    <section  class="apartments-section">
+        <h1 data-aos="fade-down" >Наши квартиры</h1>
+        <div data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1000" class="apartments-grid">
+            <div class="apartment">
+                <img src="{% static 'images/Rectangle.png' %}" alt="Лофт — 3 этажа">
+                <p>Лофт — 3 этажа</p>
+            </div>
+            <div class="apartment">
+                <img src="{% static 'images/Rectangle.png' %}" alt="Лофт — 2 этажа">
+                <p>Лофт — 2 этажа</p>
+            </div>
+            <div class="apartment">
+                <img src="{% static 'images/Rectangle.png' %}" alt="Лофт — 3 этажа">
+                <p>Лофт — 3 этажа</p>
+            </div>
+            <div class="apartment">
+                <img src="{% static 'images/Rectangle.png' %}" alt="Лофт — 2 этажа">
+                <p>Лофт — 2 этажа</p>
+            </div>
+        </div>
+    </section>
+    <section class="section__input">
+        <div class="input__back container">
+            <div data-aos="fade-down-right" data-aos-duration="1000" class="input__info">
+                
+                <h2>Хотите посмотреть?</h2>
+                <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является
+                    стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник
+                    создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.
+                </p>
+            </div>
+            <div data-aos="flip-left" data-aos-duration="1000" class="input__area">
+                <div class="input__area-info">
+                    <input type="text" placeholder="Ваше имя">
+                    <input type="tel" placeholder="Ваш  телефон">
+                </div>
+                
+                <div class="input__area-text">
+                    <a href="#">Посмотреть Район</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="video-section">
+        <div data-aos="fade-left" data-aos-duration="1000" class="video-container">
+            <video id="loftVideo" muted autoplay loop >
+                <source src="{% static 'video/0929.mp4' %}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="play-button" id="playBtn">
+                
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div data-aos="fade-down-right" data-aos-duration="1000" class="questions">
+            <h2>Есть вопросы?</h2>
+            <p>*Мы никому не передаем ваши данные. И не сохраняем ваш номер в базу.</p>
+            <div class="form">
+                <form method="POST" action="{% url 'view_data' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="password" name="password" placeholder="Ваш пароль" required>
+                    <button type="submit">Посмотреть данные</button>
+                </form>
+            </div>
+            
+            
+        </div>
+        <div data-aos="fade-down-right" data-aos-duration="1000" class="footer-info">
+            <div class="footer-left">
+                <a href=""><img src="{% static 'images/1.png' %}" alt=""></a>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li>О комплексе</li>
+                    <li>Район</li>
+                    <li>Каталог квартир</li>
+                    <li>Ипотека</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p>Адрес: Наб. реки Фонтанки 10-15</p>
+                <p>Телефон: 8 (812) 123-45-67</p>
+                <p>Отдел продаж: 10:00 - 20:00</p>
+                <p>E-mail: <a href="mailto:vip@housevip.ru">vip@housevip.ru</a></p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-youtube icon-large"></i></a>
+                    <a href="#"><i class="fab fa-linkedin icon-large"></i></a>
+                    <a href="#"><i class="fab fa-facebook icon-large"></i></a>
+                    <a href="#"><i class="fab fa-instagram icon-large"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <h2 class="oybek">This site powered by <a href="https://t.me/kebyo14">Oybek</a></h2>
+</body>
+
+</html>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
